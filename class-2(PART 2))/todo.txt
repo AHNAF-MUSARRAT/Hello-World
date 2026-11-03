@@ -1,0 +1,9 @@
+Class 02:
+Topic Name: Introduction(JS)
+Outcome:
+    1. Loop
+    2. Function without parameter
+    3. Function with parameter
+    4. Function with return type
+    5. Array
+    

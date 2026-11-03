@@ -1,0 +1,46 @@
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #111827, #1f2937, #7f1d1d);
+  min-height: 100vh;
+  color: white;
+}
+
+h1 {
+  font-weight: 700;
+}
+
+.card {
+  background: white;
+  color: black;
+  border-radius: 20px;
+}
+
+.car-card {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 20px;
+  transition: 0.3s;
+  border: 2px solid transparent;
+}
+
+.car-card:hover {
+  transform: translateY(-8px);
+  border-color: red;
+}
+
+.car-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 15px;
+  background: #d1d5db;
+}
+
+.active {
+  border: 3px solid #ff0000;
+  box-shadow: 0 0 25px red;
+}
+
+button {
+  border-radius: 30px !important;
+}

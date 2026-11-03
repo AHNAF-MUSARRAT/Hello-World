@@ -1,0 +1,14 @@
+Class 01:
+Topic Name: Introduction(JS)
+Outcome:
+    1. Alert function
+    2. Console.log function
+    3. Document.write function
+    4. Comment
+    5. Variable
+    6. Data types
+    7. Data conversion
+    8. Length of string
+    9. toUpperCase function
+    10. toLowerCase function
+    11. Conditional statement

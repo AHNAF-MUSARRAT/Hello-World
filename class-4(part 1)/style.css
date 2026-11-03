@@ -1,0 +1,44 @@
+body {
+  background-color: #f0ffdf;
+  font-family: Cambria;
+}
+
+.container {
+  background-color: #ea7b7b;
+  width: 800px;
+  margin: auto;
+  border: 5px solid #301ca0;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.container h1 {
+  font-size: 35px;
+  text-align: center;
+  color: white;
+  border-bottom: 5px solid #fef3e2;
+}
+
+.container img {
+  width: 500px;
+  margin-left: 150px;
+}
+
+.container p {
+  text-align: justify;
+  font-size: 18px;
+  color: white;
+}
+
+.container a {
+  text-decoration: none;
+  background-color: blueviolet;
+  padding: 10px 30px;
+  color: white;
+  margin-left: 300px;
+  border-radius: 5px;
+}
+
+.container a:hover {
+  background-color: rgb(43, 6, 78);
+}

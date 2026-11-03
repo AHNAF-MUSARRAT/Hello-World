@@ -1,0 +1,47 @@
+Class 01: Introduction 
+Outcome:
+1. Learn what HTML is.  
+2. Learn what CSS is.  
+3. Install Visual Studio Code.  
+4. `<h1>` to `<h6>` tags  
+5. `<p>` tag  
+6. `<img>` tag  
+7. `width` and `height` attributes  
+8. `<br>` tag  
+9. `<hr>` tag  
+10. `<head>` tag 
+11. `<body>` tag  
+12. `<title>` tag
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

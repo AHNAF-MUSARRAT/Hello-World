@@ -1,0 +1,9 @@
+ <!-- Class 04:
+    Topic Name: Introduction (Continue)
+    Outcome:
+        1. Border
+        2. Border radius
+        3. padding
+        4. Float
+        5. Hover
+        6. Body color -->

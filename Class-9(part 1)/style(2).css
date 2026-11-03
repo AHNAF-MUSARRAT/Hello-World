@@ -1,0 +1,77 @@
+body {
+  font-family: Arial;
+  margin: 0;
+  background: linear-gradient(120deg, #11998e, #38ef7d);
+}
+
+.courses {
+  text-align: center;
+  padding: 40px;
+}
+
+.top-text {
+  color: #ff7a00;
+  font-weight: bold;
+}
+
+h1 {
+  margin-bottom: 40px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+}
+
+/* LEFT IMAGE */
+
+.left img {
+  width: 350px;
+  animation: float 3s ease-in-out infinite;
+}
+
+/* RIGHT CARDS */
+
+.right {
+  display: grid;
+  grid-template-columns: repeat(2, 200px);
+  gap: 25px;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+}
+
+.card img {
+  width: 60px;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.card a {
+  text-decoration: none;
+  color: #ff7a00;
+  font-weight: bold;
+}
+
+/* ANIMATION */
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}

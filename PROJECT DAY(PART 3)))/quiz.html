@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AUTOX - Quiz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<nav>
+    <h2 class="logo">AUTO<span>X</span></h2>
+
+    <div class="nav-links">
+        <a href="index.html">01 Home</a>
+        <a href="supercars.html">02 Supercars</a>
+        <a href="racing.html">03 Racing</a>
+        <a href="electric.html">04 Electric</a>
+        <a href="technology.html">05 Technology</a>
+        <a href="history.html">06 History</a>
+        <a class="active" href="quiz.html">07 Quiz</a>
+    </div>
+</nav>
+
+<section class="page-header">
+
+    <p class="page-title">PAGE 07</p>
+
+    <h1>CAR QUIZ</h1>
+
+    <p>
+        Test your knowledge of cars and automotive technology.
+    </p>
+
+</section>
+
+<section class="section">
+
+    <div class="quiz-box">
+
+        <div id="quiz">
+
+            <p id="question" class="question">
+                Question
+            </p>
+
+            <button class="answer" onclick="checkAnswer(0)" id="answer0">
+                Answer
+            </button>
+
+            <button class="answer" onclick="checkAnswer(1)" id="answer1">
+                Answer
+            </button>
+
+            <button class="answer" onclick="checkAnswer(2)" id="answer2">
+                Answer
+            </button>
+
+            <button class="answer" onclick="checkAnswer(3)" id="answer3">
+                Answer
+            </button>
+
+        </div>
+
+        <p id="result"></p>
+
+        <button
+            class="button"
+            onclick="nextQuestion()"
+            id="next"
+            style="display:none;">
+            Next Question
+        </button>
+
+    </div>
+
+</section>
+
+<footer>
+    <p>© 2026 AUTOX | Page 07</p>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>

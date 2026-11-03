@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Introduction to JavaScript</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Introduction to JavaScript</h1>
+      <button onclick="showAlert()">Click Me</button>
+    </div>
+
+    <script>
+      // Alert function
+
+      function showAlert() {
+        alert("Here is me...");
+      }
+
+      // Console.log function
+      console.log("This is a message in the console.");
+
+      // Document.write function
+      document.write("This is a message written to the document.");
+
+      // Comment
+
+      // Multi-line comment
+      /*
+            This is a comment
+            This is a comment
+            This is a comment
+        */
+
+      //  5. Variable
+
+      let name = "John Doe";
+      var age = 30;
+      const PI = 3.14;
+      console.log(name);
+      document.write(age);
+
+      //  6. Data types
+      let integer = 10;
+      let float = 3.14;
+      let string = "Hello World";
+      let boolean = true;
+
+      // 7. Data conversion
+
+      // Convert number to string
+      let num1 = 10;
+      let str = num1.toString();
+      console.log(typeof str);
+
+      // Convert string to number
+      let str1 = "100";
+      let num2 = Number(str1);
+      console.log(typeof num2);
+
+      // 8. Length of string
+      let str2 = "Hello World";
+      console.log(str2.length);
+
+      //   9. toUpperCase function
+      let str3 = "hello world";
+      console.log(str3.toUpperCase());
+
+      // 10. toLowerCase function
+      let str4 = "HELLO WORLD";
+      console.log(str4.toLowerCase());
+
+      // 11. Conditional statement
+
+      // Syntax
+      // if (initialization, condition, increment / decrement) {
+      //     // Code to be executed
+      // }
+
+      // Example
+
+      let marks = 100;
+
+      if (marks >= 80 && marks <= 100) {
+        console.log("You got an A+");
+      } else if (marks >= 70 && marks <= 79) {
+        console.log("You got an A");
+      } else if (marks >= 60 && marks <= 69) {
+        console.log("You got a A-");
+      } else if (marks >= 50 && marks <= 59) {
+        console.log("You got a B");
+      } else if (marks >= 40 && marks <= 49) {
+        console.log("You got a C");
+      } else if (marks >= 33 && marks <= 39) {
+        console.log("You got a D");
+      } else if (marks >= 0 && marks <= 32) {
+        console.log("You got an F");
+      } else {
+        console.log("Invalid marks");
+      }
+    </script>
+  </body>
+</html>

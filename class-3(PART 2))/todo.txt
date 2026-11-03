@@ -1,0 +1,11 @@
+Class 03:
+Topic Name: Introduction(JS)
+Outcome:
+    1. DOM access / Document Object Model.
+    2. Changing HTML using Dom
+    3. Changing image using Dom
+    4. Changing style using Dom
+    5. Click Event Listener
+    6. Mouse Over Event Listener
+    7. Mouse Out Event Listener
+    

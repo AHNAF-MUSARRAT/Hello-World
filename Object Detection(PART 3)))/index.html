@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Vision AI Detector</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #071e26, #0b3d4a, #126782);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: white;
+        }
+
+        .app {
+            width: 100%;
+            max-width: 750px;
+            background: white;
+            color: #17202a;
+            border-radius: 25px;
+            padding: 35px;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, .35);
+        }
+
+        .icon {
+            font-size: 45px;
+        }
+
+        h1 {
+            font-size: 38px;
+            margin: 5px 0;
+            color: #087f8c;
+        }
+
+        header p {
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .upload-area {
+            border: 2px dashed #58b8c3;
+            border-radius: 18px;
+            padding: 25px;
+            background: #f1fbfc;
+        }
+
+        .upload-btn {
+            display: inline-block;
+            background: #087f8c;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: .3s;
+        }
+
+        .upload-btn:hover {
+            background: #065f69;
+            transform: scale(1.04);
+        }
+
+        #file-name {
+            margin-top: 12px;
+            color: #777;
+            font-size: 14px;
+        }
+
+        .status {
+            display: inline-block;
+            margin: 22px 0;
+            padding: 9px 18px;
+            border-radius: 20px;
+            background: #e6f7f8;
+            color: #087f8c;
+            font-weight: bold;
+        }
+
+        .image-area {
+            width: 100%;
+            max-width: 600px;
+            margin: auto;
+            border-radius: 15px;
+            overflow: hidden;
+            background: #111;
+        }
+
+        canvas {
+            width: 100%;
+            display: block;
+        }
+
+        .info {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            color: #555;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="app">
+
+        <header>
+            <div class="icon">👁️</div>
+
+            <h1>Vision AI</h1>
+
+            <p>
+                Upload a picture and let AI find the objects inside it.
+            </p>
+        </header>
+
+        <div class="upload-area">
+
+            <label for="image-upload" class="upload-btn">
+                📁 Choose Image
+            </label>
+
+            <input type="file" id="image-upload" accept="image/*" hidden>
+
+            <p id="file-name">
+                No image selected
+            </p>
+
+        </div>
+
+        <div id="output" class="status">
+            Loading AI model...
+        </div>
+
+        <div class="image-area">
+            <canvas id="canvas"></canvas>
+        </div>
+
+        <div class="info">
+            <span>🤖 AI Object Detection</span>
+            <span>📊 Confidence Scores</span>
+        </div>
+
+    </div>
+
+
+    <!-- TensorFlow.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.22.0/dist/tf.min.js"></script>
+
+    <!-- COCO-SSD -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd@2.2.3/dist/coco-ssd.min.js"></script>
+
+
+    <script>
+
+        const imageUpload = document.getElementById("image-upload");
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
+
+        const output = document.getElementById("output");
+        const fileName = document.getElementById("file-name");
+
+        canvas.width = 600;
+        canvas.height = 400;
+
+        let model;
+
+
+        // Load AI model
+        cocoSsd.load().then(function (loadedModel) {
+
+            model = loadedModel;
+
+            output.innerHTML = "AI model is ready ✓";
+
+        }).catch(function () {
+
+            output.innerHTML = "Model could not load";
+
+        });
+
+
+        // When an image is selected
+        imageUpload.addEventListener("change", function (event) {
+
+            const file = event.target.files[0];
+
+            if (!file) return;
+
+            fileName.innerHTML = file.name;
+
+            const image = new Image();
+            const reader = new FileReader();
+
+
+            reader.onload = function () {
+
+                image.src = reader.result;
+
+                image.onload = function () {
+
+                    ctx.clearRect(
+                        0,
+                        0,
+                        canvas.width,
+                        canvas.height
+                    );
+
+                    ctx.drawImage(
+                        image,
+                        0,
+                        0,
+                        canvas.width,
+                        canvas.height
+                    );
+
+                    detectObjects(image);
+
+                };
+
+            };
+
+            reader.readAsDataURL(file);
+
+        });
+
+
+        // Detect objects
+        function detectObjects(image) {
+
+            if (!model) {
+
+                output.innerHTML =
+                    "Please wait for the AI model...";
+
+                return;
+            }
+
+            output.innerHTML =
+                "Scanning image...";
+
+
+            model.detect(image).then(function (predictions) {
+
+                output.innerHTML =
+                    predictions.length +
+                    " object(s) detected";
+
+
+                const scaleX =
+                    canvas.width / image.width;
+
+                const scaleY =
+                    canvas.height / image.height;
+
+
+                predictions.forEach(function (prediction) {
+
+                    const [x, y, width, height] =
+                        prediction.bbox;
+
+
+                    const newX = x * scaleX;
+                    const newY = y * scaleY;
+                    const newWidth = width * scaleX;
+                    const newHeight = height * scaleY;
+
+
+                    // Detection box
+                    ctx.strokeStyle = "#00a6b4";
+                    ctx.lineWidth = 3;
+
+                    ctx.strokeRect(
+                        newX,
+                        newY,
+                        newWidth,
+                        newHeight
+                    );
+
+
+                    // Confidence
+                    const confidence =
+                        (prediction.score * 100).toFixed(1);
+
+
+                    // Label
+                    ctx.fillStyle = "#00a6b4";
+                    ctx.font = "bold 16px Arial";
+
+                    ctx.fillText(
+                        prediction.class +
+                        " " +
+                        confidence +
+                        "%",
+                        newX,
+                        newY > 20
+                            ? newY - 7
+                            : newY + 20
+                    );
+
+                });
+
+            });
+
+        }
+
+    </script>
+
+</body>
+
+</html>

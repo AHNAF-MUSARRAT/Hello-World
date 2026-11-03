@@ -1,0 +1,10 @@
+Class 02:
+    Topic Name: Introduction (Continue)
+    Outcome:
+        1. <div> tag
+        2. <a> tag
+        3. Text alignment 
+        4. Font size
+        5. Font color
+        6. Background color
+        7. Border radius for circle image
